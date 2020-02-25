@@ -4,6 +4,8 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
+        // MORSE CODE
+
         System.out.println("0 = _");
         System.out.println("1 = ._");
         System.out.println("2 = .._");
