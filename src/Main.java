@@ -15,8 +15,6 @@ public class Main {
         System.out.println("8 = _..");
         System.out.println("9 = _.");
 
-        System.out.println("Write anything to continue");
-
         morseCodeGenerator();
 
 
@@ -27,24 +25,33 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
-
+        // HELP:           0     1     2      3       4       5      6        7      8     9
         String[] morse = {"_", "._", ".._", "..._", "...._", ".", "_....", "_...", "_..", "_."};
 
         String[] numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         String[] code = new String[4];
-        String guess = scanner.nextLine();
+        String[] codeInNumbers = new String[4];
+        String[] guess = {"0", "0", "0", "0"};
 
-        while (!guess.equals(code)) {
+        while (!Arrays.equals(guess, codeInNumbers)) {
             for (int i = 0; i < code.length; i++) {
-                code[i] = morse[random.nextInt(10)];
-                if (guess.equals(code[i])) {
-                    System.out.println("Nice!");
-                }
-
+                int rand = random.nextInt(10);
+                code[i] = morse[rand];
+                codeInNumbers[i] = numbers[rand];
             }
+            System.out.println("\nThis is the morse combination. Write one number at a time and then press enter.");
             System.out.println(Arrays.toString(code));
 
+            for (int i = 0; i < codeInNumbers.length; i++) {
+                guess[i] = scanner.nextLine();
+            }
+
+            if (Arrays.equals(guess, codeInNumbers)) {
+                System.out.println("You guessed the combination: " + Arrays.toString(codeInNumbers) +"! Congratulations");
+            } else {
+                System.out.println("That was not correct. The correct combination is: " + Arrays.toString(codeInNumbers));
+            }
         }
 
 
